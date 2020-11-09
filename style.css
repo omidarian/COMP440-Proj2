@@ -1,0 +1,86 @@
+/*CSS style sheet*/
+
+#main-wrapper {
+    width: 350px;
+    margin: 0 auto;
+    background: white;
+    padding-bottom: 40px;
+    border-radius: 10%;
+    border: 2px solid royalblue;
+}
+
+div {
+    padding: 10px;
+}
+
+p {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 16pt;
+    color: #0404B4;
+    text-align: center;
+}
+
+label {
+    text-align: left;
+    color: #B43104;
+}
+
+#logButton {
+    border-style: outset;
+    color: blue;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5%;
+    background: yellow;
+}
+
+#signUpButton {
+    border-style: outset;
+    color: blue;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5%;
+    background: yellow;
+}
+
+#regButton {
+    border-style: outset;
+    color: yellow;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5%;
+    background: blue;
+}
+
+#backButton {
+    border-style: outset;
+    color: yellow;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5%;
+    background: blue;
+}
+
+#logOutButton {
+    border-style: outset;
+    color: yellow;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5%;
+    background: red;
+}
+
+#iniDataButton {
+    border-style: outset;
+    color: yellow;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5%;
+    background: green;
+}
