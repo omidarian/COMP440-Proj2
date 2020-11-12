@@ -9,13 +9,23 @@
     border: 2px solid royalblue;
 }
 
+#blog-wrapper {
+    width: 650px;
+    height: 550px;
+    margin: 0 auto;
+    background: lightblue;
+    padding-bottom: 40px;
+    border-radius: 10%;
+    border: 2px solid royalblue;
+}
+
 div {
     padding: 10px;
 }
 
 p {
     font-family: arial, helvetica, sans-serif;
-    font-size: 16pt;
+    font-size: 14pt;
     color: #0404B4;
     text-align: center;
 }
@@ -65,6 +75,16 @@ label {
     background: blue;
 }
 
+#blgButton {
+    border-style: outset;
+    color: white;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5%;
+    background: blue;
+}
+
 #logOutButton {
     border-style: outset;
     color: yellow;
@@ -83,4 +103,61 @@ label {
     padding-right: 30px;
     border-radius: 5%;
     background: green;
+}
+
+body {
+    margin-top: 50px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn {
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+}
+
+.btn-read-more {
+    padding: 5px;
+    text-align: center;
+    border-radius: 0px;
+    display: inline-block;
+    border: 2px solid #662D91;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    color: #662D91;
+}
+
+.btn-read-more:hover {
+    color: #FFF;
+    background: #662D91;
+}
+
+.post {
+    border-bottom: 1px solid #DDD
+}
+
+.post-title {
+    color: #662D91;
+}
+
+.post .glyphicon {
+    margin-right: 5px;
+}
+
+.post-header-line {
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    padding: 5px 0px 5px 15px;
+    font-size: 12px;
+}
+
+.post-content {
+    padding-bottom: 15px;
+    padding-top: 15px;
 }

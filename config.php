@@ -2,9 +2,9 @@
 
     //mysqli_select_db($con,"user");
 	$host = 'localhost';
-	$user = 'root1';
-	$pass = '1234';
-	$db = 'login';
+	$user = 'john';
+	$pass = 'pass1234';
+	$db = 'data';
 	
 	/* $connn = mysqli_connect($host, $user, $pass, $db);  
 	

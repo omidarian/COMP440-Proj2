@@ -14,11 +14,18 @@
         <p>Welcome to Registration Form</p>
         <!-- Form of input data-->
         <form action="register.php" method="post">
-            <label>Username:</label>
+            <label>First Name:</label>
+            <input name="fName" type="text" class="inputvalues" placeholder="Type your first name" size="30"> <br><br>
+            <label>Last Name:</label>
+            <input name="lName" type="text" class="inputvalues" placeholder="Type your last name" size="30"> <br><br>
+            <label>* Email:</label>
+            <input name="email" type="text" class="inputvalues" placeholder="Type your email" size="30" required> <br><br>
+        
+            <label>* Username:</label>
             <input name="user" type="text" class="inputvalues" placeholder="Type your username" size="30" required> <br><br>
-            <label> Password:</label>
+            <label>* Password:</label>
             <input name="pass" type="password" class="inputvalues" placeholder="Type your password" size="30" required><br><br>
-            <label> Confirm Password:</label>
+            <label>* Confirm Password:</label>
             <input name="conPass" type="password" class="inputvalues" placeholder="Confirm password"size="22" required><br><br>
             <input name="subButton" type="submit" id="signUpButton" value="Sign Up"/>
             <a href="index.php"><input type="button" id="backButton" value="Back to Login"/></a>
@@ -33,7 +40,11 @@
         //echo '<script type="text/javascript"> alert("Sign Up button clicked") </script>';
 		$username = $_POST['user'];  
         $password = $_POST['pass'];  
-        $conPassword = $_POST['conPass']; 
+        $conPassword = $_POST['conPass'];
+        $fName = $_POST['fName'];
+        $lName = $_POST['lName'];
+        $email = $_POST['email'];
+
       
         //to prevent from mysqli injection  
         /* $username = stripcslashes($username);   */
@@ -45,7 +56,7 @@
       
         
         if($password == $conPassword){
-            $result = "select *from users where username = '$username'";  
+            $result = "select * from users where username = '$username'";  
             $count = mysqli_num_rows(mysqli_query($con, $result));
             
             if ( $count > 0){
@@ -54,8 +65,19 @@
                 echo '<center>Username already exists! Try another username</center>';
                 die;
             }
+
+            $result = "select * from users where email='$email' ";  
+            $count = mysqli_num_rows(mysqli_query($con, $result));
+            
+            if ( $count > 0){
+                //this username already exist.
+                $SESSION['message'] = 'User with this email already exists!';
+                echo '<center>User with this email already exists!</center>';
+                die;
+            }
+
             {
-                $sql = "INSERT INTO users "." VALUES ('$username', '$password')";
+                $sql = "INSERT INTO users "." VALUES ('$username', '$password', '$fName', '$lName', '$email')";
                 if (mysqli_query($con, $sql)) {
                       echo "<center> New record created successfully </center>";
                       echo "<center>Go back to login page</center>";

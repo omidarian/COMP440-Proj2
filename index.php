@@ -1,6 +1,15 @@
 <?php
     session_start();
     require 'config.php';
+    $sql = "create table IF not Exists users(
+        username varchar(20) not null,
+        password varchar(20),
+        firstName varchar(30),
+        lastName varchar(30),
+        email varchar(50) not null unique,
+        primary key (username)
+    )" ;
+    $con->query($sql);
 ?>
 
 <!DOCTYPE html>
