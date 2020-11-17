@@ -70,6 +70,24 @@
             <p>
             <?php echo $result['description']; ?>
             </p>
+            <?php
+                // check if the user is owner of this post  
+                    if ($result['postuser'] == $_SESSION["username"]){
+                ?>
+                <!--  Edit and Delete bottun -->
+                <div>
+                    <p>
+                    <form action="blogActions.php" method='post'>
+                        <input type="hidden" name="blogid" value=<?php echo $bId?> >
+                        <input class="btn" type="submit" name="delete" value="Delete"/>
+                        <input class="btn" type="submit" name="edit" value="Edit"/>
+                    </form>              
+                    </p>
+                </div>
+                <!-- --------------------  -->
+                <?php
+                    }
+                ?>
 
         <!-- comments ----------------------------------------------------------- -->
         <?php
@@ -108,22 +126,57 @@
 
                 <?php
                     }else{
-                ?>
+                        // if edit commnets
+                        if(isset($_GET['commentid'])){
+                            $commentid = ($_GET['commentid']);
+                            $sql = "select * from comments where commentid =  '$commentid'";
+                            $result = mysqli_fetch_array(mysqli_query($con, $sql),MYSQLI_ASSOC);
+                            $sentiment = $result['sentiment'];
+                            $description = $result['description'];
+                ?>                
+                        <!-- edit comments ----------------------------------------------------------- -->
+                        <div class="row" style="  margin-left: 30px; border: 1px solid #4CAF50;   padding: 10px;   border-radius: 10px 50px;">
+                            <form action="commentActions.php" method='post'>
+                                <input type="hidden" name="commentid" value=<?php echo $commentid?> >
+                                <input type="hidden" name="blogid" value=<?php echo $bId?> >
+                                <label for="sentiment" >Sentiment: </label> 
+                                    <select name="sentiment" id="sentiment" >
+                                        <?php if ($sentiment == "Positive"){
+                                            echo "<option value='Positive' selected >Positive</option>";
+                                            echo "<option value='Negative'>Negative</option>";
+                                            }else{
+                                                echo "<option value='Positive'>Positive</option>";
+                                                echo "<option value='Negative' selected >Negative</option>";    
+                                            } 
+                                        ?>
+                                    </select><br>
+                                <label>Description: </label><br>
+                                <textarea name="description" rows="3" cols="65" maxlength = "250"><?php echo $description?></textarea><br>
+                                <input class="btn" type="submit"  name="update" value="Update"/>
+                            </form>
+                        </div>
+
+                        <?php
+                        }else{ 
+                        ?>
                         <!-- new comments ----------------------------------------------------------- -->
                         <div class="row" style="  margin-left: 30px; border: 1px solid #4CAF50;   padding: 10px;   border-radius: 10px 50px;">
-                            <form action="saveComment.php" method='post'>
+                            <form action="commentActions.php" method='post'>
                                 <input type="hidden" name="blogid" value=<?php echo $bId?> >
                                 <label for="sentiment" >Sentiment: </label>
-                                    <select name="sentiment" id="sentiment">
+                                    <select name="sentiment" id="sentiment" required>
+                                        <option value="" disabled selected >Select your option</option>
                                         <option value="Positive">Positive</option>
                                         <option value="Negative">Negative</option>
                                     </select><br>
                                 <label>Description: </label><br>
                                 <textarea name="description" placeholder="Type your comment" rows="3" cols="65" maxlength = "250"></textarea><br>
-                                <input class="btn" type="submit"  name="save" value="Save"/>
+                                <input class="btn" type="submit"  name="add" value="Add"/>
                             </form>
                         </div> 
+ 
                 <?php
+                        }
                     }
                 }else{
                 ?>                   
@@ -137,7 +190,8 @@
                     <?php 
                         while($row = mysqli_fetch_array($resultComments))
                         {
-                        //    $bId = $row['blogid'];
+                            $cId = $row['commentid'];
+
                     ?>
                     <div class="row">
                         
@@ -147,9 +201,6 @@
                         <h4>
                             <strong><?php echo $row['sentiment']; ?></strong></h4>
                         </div>
-
-
-
                             <div class="row">
                                 <div class="col-md-12 post-header-line">
                                     <span class="glyphicon glyphicon-user"></span><?php echo $row['author']; ?> 
@@ -163,6 +214,28 @@
                                     <?php echo $row['description']; ?>
                                     </p>
                                 </div>
+
+                                
+                                <?php
+                                // check if the user is owner of this comment  
+                                    if ($row['author'] == $_SESSION["username"]){
+                                ?>
+                                <!--  Edit and Delete bottun -->
+                                <div>
+                                    <p>
+                                    <form action="commentActions.php" method='post'>
+                                        <input type="hidden" name="blogid" value=<?php echo $bId?> >
+                                        <input type="hidden" name="commentid" value=<?php echo $cId?> >
+                                        <input class="btn" type="submit" name="delete" value="Delete"/>
+                                        <input class="btn" type="submit" name="edit" value="Edit"/>
+                                    </form>              
+                                    </p>
+                                </div>
+                                <!-- --------------------  -->
+                                <?php
+                                    }
+                                ?>
+
                             </div>
                         </div>
                     </div>

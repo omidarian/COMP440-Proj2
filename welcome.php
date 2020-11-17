@@ -20,6 +20,11 @@
         <h3>Welcome: 
             <?php echo $_SESSION['username']?>
         </h3>
+        <!-- Form of Hobbies page-->
+        <form action="hobbies.php" method="post">
+            <input type="submit" name="hobbiesButton" id="hobbyButton" value="Hobbies"/></br></br>
+            
+        </form>
         <!-- Form of New Blog page-->
         <form action="Blog.php" method="post">
             <input type="submit" name="blogButton" id="blgButton" value="Blog"/></br></br>

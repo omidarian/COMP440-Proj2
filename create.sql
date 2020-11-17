@@ -23,8 +23,8 @@ create table follows(
 
 
 create table blogs(
-	blogid	int not null Auto_increment, 
-	subject	varchar(150) not null,
+	blogid	int(11) not null Auto_increment, 
+	subject	varchar(50) not null,
     description varchar(250),
     postuser varchar(20) not null,
     pdate date,

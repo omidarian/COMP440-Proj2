@@ -94,10 +94,10 @@
                     mysqli_query($con,$sqlTag);
                 }
                 
-          } else {
+            } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($con);
-          }
-          header('location:blog.php');
+            }
+            header('location:blog.php');
         }
 
         if(isset($_POST['cancel'])){

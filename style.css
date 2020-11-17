@@ -75,6 +75,16 @@ label {
     background: blue;
 }
 
+#hobbyButton {
+    border-style: outset;
+    color: whitesmoke;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 5%;
+    background: maroon;
+}
+
 #blgButton {
     border-style: outset;
     color: white;
@@ -160,4 +170,18 @@ a:hover {
 .post-content {
     padding-bottom: 15px;
     padding-top: 15px;
+}
+
+#checkboxes {
+    margin: 0 20px 0;
+}
+
+#checkbox {
+    display: inline-block;
+    width: 50%;
+}
+
+.newspaper {
+    column-count: 2;
+    column-gap: 40px;
 }
